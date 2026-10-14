@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction | E-Commerce AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"
+            defer></script>
+
+</head>
+
+
+<body>
+
+<nav class="navbar">
+
+    <a href="/" class="brand">
+
+        <div class="brand-icon">
+            E
+        </div>
+
+        <div>
+            <strong>E-Commerce AI</strong>
+            <span>Customer Intelligence</span>
+        </div>
+
+    </a>
+
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/dashboard">
+            Dashboard
+        </a>
+
+        <a href="/prediction" class="active">
+            Prediction
+        </a>
+
+    </div>
+
+
+    <a href="/prediction" class="nav-button">
+        New Prediction
+    </a>
+
+</nav>
+
+
+<main class="prediction-page">
+
+
+    <div class="page-heading">
+
+        <div>
+
+            <span class="section-label">
+                AI PREDICTION
+            </span>
+
+            <h1>
+                Customer Churn Prediction
+            </h1>
+
+            <p>
+                Enter customer information and let the
+                machine-learning model assess churn risk.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="prediction-layout">
+
+
+        <form method="POST"
+              class="prediction-form">
+
+
+            <div class="form-header">
+
+                <div class="form-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <h2>
+                        Customer Information
+                    </h2>
+
+                    <p>
+                        Provide the customer's current
+                        information and activity.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <div class="form-section-title">
+                    Personal Information
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Age
+                        </label>
+
+                        <input
+                            type="number"
+                            name="Age"
+                            min="1"
+                            max="120"
+                            placeholder="e.g. 25"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Gender
+                        </label>
+
+                        <select name="Gender" required>
+
+                            <option value="">
+                                Select gender
+                            </option>
+
+                            <option value="Male">
+                                Male
+                            </option>
+
+                            <option value="Female">
+                                Female
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>
+                            Location
+                        </label>
+
+                        <select name="Location" required>
+
+                            <option value="">
+                                Select location
+                            </option>
+
+                            <option value="Toronto">
+                                Toronto
+                            </option>
+
+                            <option value="Vancouver">
+                                Vancouver
+                            </option>
+
+                            <option value="Calgary">
+                                Calgary
+                            </option>
+
+                            <option value="Montreal">
+                                Montreal
+                            </option>
+
+                            <option value="Ottawa">
+                                Ottawa
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <div class="form-section-title">
+                    Customer Activity
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Signup Date
+                        </label>
+
+                        <input
+                            type="text"
+                            name="Signup_Date"
+                            placeholder="DD-MM-YYYY"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Last Login
+                        </label>
+
+                        <input
+                            type="text"
+                            name="Last_Login"
+                            placeholder="DD-MM-YYYY"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Time on App
+                        </label>
+
+                        <div class="input-with-unit">
+
+                            <input
+                                type="number"
+                                name="Time_Spent"
+                                step="0.01"
+                                min="0"
+                                placeholder="48.5"
+                                required
+                            >
+
+                            <span>
+                                min
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Loyalty Member
+                        </label>
+
+                        <select name="Loyalty_Member" required>
+
+                            <option value="">
+                                Select
+                            </option>
+
+                            <option value="Yes">
+                                Yes
+                            </option>
+
+                            <option value="No">
+                                No
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <div class="form-section-title">
+                    Purchase Behavior
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Total Spent
+                        </label>
+
+                        <div class="input-with-unit">
+
+                            <span class="prefix">
+                                $
+                            </span>
+
+                            <input
+                                type="number"
+                                name="Total_Spent"
+                                step="0.01"
+                                min="0"
+                                placeholder="1921.08"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Total Orders
+                        </label>
+
+                        <input
+                            type="number"
+                            name="Total_Orders"
+                            min="0"
+                            placeholder="25"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Average Order Value
+                        </label>
+
+                        <div class="input-with-unit">
+
+                            <span class="prefix">
+                                $
+                            </span>
+
+                            <input
+                                type="number"
+                                name="Average_Order_Value"
+                                step="0.01"
+                                min="0"
+                                placeholder="91.48"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Discount Used
+                        </label>
+
+                        <div class="input-with-unit">
+
+                            <input
+                                type="number"
+                                name="Discount_Used"
+                                step="0.01"
+                                min="0"
+                                max="100"
+                                placeholder="16"
+                                required
+                            >
+
+                            <span>
+                                %
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Preferred Category
+                        </label>
+
+                        <select name="Preferred_Category" required>
+
+                            <option value="">
+                                Select category
+                            </option>
+
+                            <option value="Clothing">
+                                Clothing
+                            </option>
+
+                            <option value="Electronics">
+                                Electronics
+                            </option>
+
+                            <option value="Home & Garden">
+                                Home & Garden
+                            </option>
+
+                            <option value="Beauty">
+                                Beauty
+                            </option>
+
+                            <option value="Sports">
+                                Sports
+                            </option>
+
+                            <option value="Books">
+                                Books
+                            </option>
+
+                            <option value="Groceries">
+                                Groceries
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Payment Method
+                        </label>
+
+                        <select name="Payment_Method" required>
+
+                            <option value="">
+                                Select payment
+                            </option>
+
+                            <option value="Credit Card">
+                                Credit Card
+                            </option>
+
+                            <option value="Debit Card">
+                                Debit Card
+                            </option>
+
+                            <option value="PayPal">
+                                PayPal
+                            </option>
+
+                            <option value="Cash">
+                                Cash
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="predict-button">
+
+                <span>
+                    ✦
+                </span>
+
+                Predict Customer Churn
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+
+        </form>
+
+
+        <aside class="result-panel">
+
+
+            {% if result %}
+
+
+            <div class="result-card result-active">
+
+
+                <div class="result-card-header">
+
+                    <div class="result-icon">
+                        {% if result.prediction == "Yes" %}
+                            !
+                        {% else %}
+                            ✓
+                        {% endif %}
+                    </div>
+
+                    <span>
+                        PREDICTION COMPLETE
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    {% if result.prediction == "Yes" %}
+
+                        Customer is likely to churn
+
+                    {% else %}
+
+                        Customer is unlikely to churn
+
+                    {% endif %}
+                </h2>
+
+
+                <div class="probability-circle">
+
+                    <div>
+
+                        <strong>
+                            {{ result.probability }}%
+                        </strong>
+
+                        <span>
+                            probability
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="risk-result">
+
+                    <span>
+                        Risk Level
+                    </span>
+
+                    <strong class="{{ result.risk|lower }}">
+                        {{ result.risk }}
+                    </strong>
+
+                </div>
+
+
+                <div class="result-message">
+
+                    {% if result.prediction == "Yes" %}
+
+                        This customer shows behavioral patterns
+                        associated with churn. Consider targeted
+                        retention strategies.
+
+                    {% else %}
+
+                        This customer currently shows lower
+                        churn risk based on the information
+                        provided.
+
+                    {% endif %}
+
+                </div>
+
+
+            </div>
+
+
+            {% else %}
+
+
+            <div class="result-card result-empty">
+
+                <div class="empty-icon">
+                    ✦
+                </div>
+
+                <span class="card-label">
+                    AI ANALYSIS
+                </span>
+
+                <h2>
+                    Your prediction will appear here
+                </h2>
+
+                <p>
+                    Complete the customer information form
+                    and click the prediction button to generate
+                    an AI-powered churn assessment.
+                </p>
+
+
+                <div class="empty-features">
+
+                    <div>
+                        <span>✓</span>
+                        Churn probability
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Risk classification
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Customer interpretation
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            {% endif %}
+
+
+            {% if error %}
+
+            <div class="error-card">
+
+                <strong>
+                    Prediction Error
+                </strong>
+
+                <p>
+                    {{ error }}
+                </p>
+
+            </div>
+
+            {% endif %}
+
+
+        </aside>
+
+
+    </div>
+
+</main>
+
+
+</body>
+</html>

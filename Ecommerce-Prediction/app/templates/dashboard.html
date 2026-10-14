@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | E-Commerce AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"
+            defer></script>
+
+</head>
+
+
+<body>
+
+<nav class="navbar">
+
+    <a href="/" class="brand">
+
+        <div class="brand-icon">
+            E
+        </div>
+
+        <div>
+            <strong>E-Commerce AI</strong>
+            <span>Customer Intelligence</span>
+        </div>
+
+    </a>
+
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/dashboard" class="active">
+            Dashboard
+        </a>
+
+        <a href="/prediction">
+            Prediction
+        </a>
+
+    </div>
+
+
+    <a href="/prediction" class="nav-button">
+        Predict Customer
+    </a>
+
+</nav>
+
+
+<main class="dashboard-page">
+
+
+    <div class="page-heading">
+
+        <div>
+
+            <span class="section-label">
+                ANALYTICS OVERVIEW
+            </span>
+
+            <h1>
+                Customer Dashboard
+            </h1>
+
+            <p>
+                Monitor customer behavior and e-commerce
+                performance from one place.
+            </p>
+
+        </div>
+
+
+        <a href="/prediction"
+           class="btn btn-primary">
+
+            + New Prediction
+
+        </a>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <section class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span>
+                    Total Customers
+                </span>
+
+                <div class="stat-icon blue">
+                    ◉
+                </div>
+
+            </div>
+
+            <h2>
+                {{ "{:,}".format(total_customers) }}
+            </h2>
+
+            <small>
+                Customers in dataset
+            </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span>
+                    Total Orders
+                </span>
+
+                <div class="stat-icon purple">
+                    ◫
+                </div>
+
+            </div>
+
+            <h2>
+                {{ "{:,}".format(total_orders) }}
+            </h2>
+
+            <small>
+                Recorded customer orders
+            </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span>
+                    Total Spending
+                </span>
+
+                <div class="stat-icon green">
+                    $
+                </div>
+
+            </div>
+
+            <h2>
+                ${{ "{:,.0f}".format(total_spent) }}
+            </h2>
+
+            <small>
+                Customer spending
+            </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span>
+                    Churn Rate
+                </span>
+
+                <div class="stat-icon red">
+                    !
+                </div>
+
+            </div>
+
+            <h2>
+                {{ churn_rate }}%
+            </h2>
+
+            <small>
+                {{ "{:,}".format(churned_customers) }}
+                customers churned
+            </small>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- MAIN ANALYTICS -->
+
+    <section class="analytics-grid">
+
+
+        <!-- CHURN CHART -->
+
+        <div class="analytics-card large">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="card-label">
+                        CUSTOMER OVERVIEW
+                    </span>
+
+                    <h3>
+                        Churn Distribution
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-wrapper">
+
+                <canvas
+                    id="churnChart"
+                    data-churn-rate="{{ churn_rate }}">
+                </canvas>
+
+            </div>
+
+        </div>
+
+
+        <!-- CATEGORIES -->
+
+        <div class="analytics-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="card-label">
+                        PRODUCTS
+                    </span>
+
+                    <h3>
+                        Categories
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="category-list">
+
+                {% for category, count in categories.items() %}
+
+                <div class="category-item">
+
+                    <div class="category-info">
+
+                        <span>
+                            {{ category }}
+                        </span>
+
+                        <strong>
+                            {{ "{:,}".format(count) }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress">
+
+                        <div
+                            class="progress-bar"
+                            data-width="{{ (count / total_customers * 100)|round(1) }}">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- BOTTOM ANALYTICS -->
+
+    <section class="analytics-grid bottom-grid">
+
+
+        <!-- PAYMENT METHODS -->
+
+        <div class="analytics-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="card-label">
+                        PAYMENTS
+                    </span>
+
+                    <h3>
+                        Payment Methods
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="simple-list">
+
+                {% for method, count in payment_methods.items() %}
+
+                <div class="list-item">
+
+                    <span>
+                        {{ method }}
+                    </span>
+
+                    <strong>
+                        {{ "{:,}".format(count) }}
+                    </strong>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- ORDER STATISTICS -->
+
+        <div class="analytics-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="card-label">
+                        AVERAGE VALUE
+                    </span>
+
+                    <h3>
+                        Order Statistics
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="order-stat">
+
+                <span>
+                    Average Order Value
+                </span>
+
+                <strong>
+                    ${{ "{:,.2f}".format(average_order_value) }}
+                </strong>
+
+            </div>
+
+
+            <div class="order-stat">
+
+                <span>
+                    Average Customer Spend
+                </span>
+
+                <strong>
+                    ${{ "{:,.2f}".format(average_spent) }}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="dashboard-cta">
+
+        <div>
+
+            <span class="section-label">
+                MACHINE LEARNING
+            </span>
+
+            <h2>
+                Want to check a customer?
+            </h2>
+
+            <p>
+                Use our trained ML model to calculate
+                the customer's churn probability.
+            </p>
+
+        </div>
+
+
+        <a href="/prediction"
+           class="btn btn-primary">
+
+            Predict Churn →
+
+        </a>
+
+    </section>
+
+
+</main>
+
+
+<!-- DASHBOARD JAVASCRIPT -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /*
+     * Churn Doughnut Chart
+     */
+
+    const churnCanvas =
+        document.getElementById("churnChart");
+
+    if (churnCanvas) {
+
+        const churnRate =
+            Number(churnCanvas.dataset.churnRate);
+
+        new Chart(churnCanvas, {
+
+            type: "doughnut",
+
+            data: {
+
+                labels: [
+                    "Not Churned",
+                    "Churned"
+                ],
+
+                datasets: [{
+
+                    data: [
+                        100 - churnRate,
+                        churnRate
+                    ],
+
+                    backgroundColor: [
+                        "#2563eb",
+                        "#ef4444"
+                    ],
+
+                    borderWidth: 0
+
+                }]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                cutout: "72%",
+
+                plugins: {
+
+                    legend: {
+
+                        position: "bottom"
+
+                    }
+
+                }
+
+            }
+
+        });
+
+    }
+
+
+    /*
+     * Category Progress Bars
+     */
+
+    const progressBars =
+        document.querySelectorAll(".progress-bar");
+
+    progressBars.forEach(function (bar) {
+
+        const width =
+            Number(bar.dataset.width);
+
+        bar.style.width = `${width}%`;
+
+    });
+
+});
+
+</script>
+
+
+</body>
+</html>

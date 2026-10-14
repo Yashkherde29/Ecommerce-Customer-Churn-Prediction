@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>E-Commerce AI | Customer Intelligence</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"
+            defer></script>
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <a href="/" class="brand">
+        <div class="brand-icon">E</div>
+
+        <div>
+            <strong>E-Commerce AI</strong>
+            <span>Customer Intelligence</span>
+        </div>
+    </a>
+
+    <div class="nav-links">
+        <a class="active" href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/prediction">Prediction</a>
+    </div>
+
+    <a href="/prediction" class="nav-button">
+        Predict Customer
+    </a>
+
+</nav>
+
+
+<main>
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                <span class="pulse"></span>
+                MACHINE LEARNING PLATFORM
+            </div>
+
+            <h1>
+                Understand your
+                <span>customers.</span>
+                Predict what comes next.
+            </h1>
+
+            <p>
+                E-Commerce AI analyzes customer behavior,
+                purchase patterns and engagement data to
+                identify customers who are likely to churn.
+            </p>
+
+            <div class="hero-actions">
+
+                <a href="/prediction" class="btn btn-primary">
+                    Start Prediction
+                    <span>→</span>
+                </a>
+
+                <a href="/dashboard" class="btn btn-light">
+                    Explore Dashboard
+                </a>
+
+            </div>
+
+            <div class="hero-trust">
+
+                <div class="trust-item">
+                    <strong>100K+</strong>
+                    <span>Customers analyzed</span>
+                </div>
+
+                <div class="trust-divider"></div>
+
+                <div class="trust-item">
+                    <strong>ML</strong>
+                    <span>Powered predictions</span>
+                </div>
+
+                <div class="trust-divider"></div>
+
+                <div class="trust-item">
+                    <strong>24/7</strong>
+                    <span>Customer insights</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+            <div class="dashboard-preview">
+
+                <div class="preview-header">
+
+                    <div>
+                        <span class="preview-label">
+                            CUSTOMER ANALYTICS
+                        </span>
+
+                        <h3>
+                            Overview
+                        </h3>
+                    </div>
+
+                    <div class="preview-dots">
+                        •••
+                    </div>
+
+                </div>
+
+
+                <div class="preview-stats">
+
+                    <div class="mini-stat">
+
+                        <span>
+                            Customers
+                        </span>
+
+                        <strong>
+                            100K
+                        </strong>
+
+                        <small class="positive">
+                            ↑ 12.4%
+                        </small>
+
+                    </div>
+
+
+                    <div class="mini-stat">
+
+                        <span>
+                            Churn Rate
+                        </span>
+
+                        <strong>
+                            23.8%
+                        </strong>
+
+                        <small class="negative">
+                            ↑ 2.1%
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-card">
+
+                    <div class="chart-title">
+                        Customer Activity
+                    </div>
+
+                    <div class="fake-chart">
+
+                        <div class="chart-line"></div>
+
+                        <div class="chart-bars">
+
+                            <span style="height:35%"></span>
+                            <span style="height:48%"></span>
+                            <span style="height:42%"></span>
+                            <span style="height:65%"></span>
+                            <span style="height:58%"></span>
+                            <span style="height:78%"></span>
+                            <span style="height:70%"></span>
+                            <span style="height:90%"></span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="chart-labels">
+
+                        <span>Jan</span>
+                        <span>Feb</span>
+                        <span>Mar</span>
+                        <span>Apr</span>
+                        <span>May</span>
+                        <span>Jun</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="risk-preview">
+
+                    <div class="risk-icon">
+                        !
+                    </div>
+
+                    <div>
+                        <strong>
+                            Churn risk detected
+                        </strong>
+
+                        <span>
+                            18,421 customers require attention
+                        </span>
+                    </div>
+
+                    <span class="risk-arrow">
+                        →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="features-section">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="section-label">
+                    PLATFORM
+                </span>
+
+                <h2>
+                    Everything you need to understand customers
+                </h2>
+            </div>
+
+            <p>
+                Turn raw e-commerce data into actionable
+                customer intelligence.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    01
+                </div>
+
+                <div class="feature-icon blue">
+                    ◈
+                </div>
+
+                <h3>
+                    Customer Analytics
+                </h3>
+
+                <p>
+                    Explore customer spending, orders,
+                    categories, loyalty and engagement
+                    patterns.
+                </p>
+
+                <a href="/dashboard">
+                    Explore analytics →
+                </a>
+
+            </div>
+
+
+            <div class="feature-card featured">
+
+                <div class="feature-number">
+                    02
+                </div>
+
+                <div class="feature-icon purple">
+                    ✦
+                </div>
+
+                <h3>
+                    AI Churn Prediction
+                </h3>
+
+                <p>
+                    Use machine learning to estimate the
+                    probability that a customer will churn.
+                </p>
+
+                <a href="/prediction">
+                    Make a prediction →
+                </a>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    03
+                </div>
+
+                <div class="feature-icon green">
+                    ↗
+                </div>
+
+                <h3>
+                    Risk Intelligence
+                </h3>
+
+                <p>
+                    Categorize customers into low, medium
+                    and high-risk segments.
+                </p>
+
+                <a href="/prediction">
+                    Analyze risk →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="cta-section">
+
+        <div>
+
+            <span class="section-label">
+                READY TO START?
+            </span>
+
+            <h2>
+                Find out which customers are at risk.
+            </h2>
+
+            <p>
+                Enter customer information and get an
+                AI-powered churn prediction in seconds.
+            </p>
+
+        </div>
+
+        <a href="/prediction"
+           class="btn btn-white">
+            Run Prediction →
+        </a>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div>
+        <strong>E-Commerce AI</strong>
+        <span>Customer Intelligence Platform</span>
+    </div>
+
+    <span>
+        Machine Learning • Analytics • Prediction
+    </span>
+
+</footer>
+
+
+</body>
+</html>
